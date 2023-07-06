@@ -192,6 +192,14 @@ void SetFastDownloadUrl(const char[] hostname)
 
 public void OnConfigsExecuted()
 {
+	if (fastdl_autoupdate_downloadurl.BoolValue)
+	{
+		char hostname[PLATFORM_MAX_PATH];
+		fastdl_hostname.GetString(hostname, sizeof(hostname));
+		
+		SetFastDownloadUrl(hostname);
+	}
+
 	RequestFrame(OnConfigsExecutedPost);
 }
 
